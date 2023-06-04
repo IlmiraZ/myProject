@@ -1,4 +1,4 @@
-# Проект MyProject
+# Проект Social Media API
 * собрать проект maven `$MAVEN_HOME/bin/mvn clean package`
 * создать Docker-образ приложения `docker build -t project-api .`
 * запустить сервисы через docker-compose `docker-compose up -d`
