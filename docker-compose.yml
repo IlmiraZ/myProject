@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  db:
+    container_name: project-db
+    image: postgres:13
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: project
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 1234
+      PGDATA: postgres
+      TZ: Europe/Moscow
+      PGTZ: Europe/Moscow
+
+  project-api:
+    container_name: project-api
+    image: project-api:latest
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    volumes:
+      - "./images:/storage"
+      - "/etc/timezone:/etc/timezone:ro"
+      - "/etc/localtime:/etc/localtime:ro"
